@@ -1,20 +1,18 @@
-// import React from 'react';
-// import data from "./data";
+import React from 'react';
+import data from "./data";
 
-// const image = data.album.images[0].url
-// const title = data.name
-// const artist = data.album.artists[0].name
-
-// class Song extends React.Component {
-//     render() {
-//         return (
-//             <div className="card"> 
-//     <img src={image} alt="imageAlbum" id="imageAlbum" /> 
-//     <h2 id="songTitle">{title}</h2>
-//     <p className="title" id="artists">{artist}</p>
-//     <button className="button">Select</button>
-//             </div>
-//         );
-//     }
-// }
-// export default Song;
+const Song = () => {
+        return (
+        <header className="App-body">
+            <h1>Spotify React</h1>
+            <div className="card"> 
+                <img src={data.album.images[0].url} alt="imageAlbum" id="imageAlbum" /> 
+                <h2 id="songTitle">{data.album.name}</h2>
+                <p className="title" id="artists">{data.album.artists[0].name}</p>
+                <button className="button">Select</button>   
+            </div>
+        </header>
+        );
+    }
+ 
+export default Song;
