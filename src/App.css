@@ -132,6 +132,8 @@ input[type="submit"] {
   border: 1px solid grey;
   padding: 0px 0px 25px 0px;
   margin: 0px 0px 25px 0px;
+  width: 30%;
+  display: flex;
 }
 
 /* Some left and right padding inside the container */
