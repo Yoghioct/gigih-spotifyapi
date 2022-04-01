@@ -1,5 +1,6 @@
 import './App.css';
 import axios from 'axios';
+import React from 'react';
 import {useEffect, useState} from 'react';
 
 
@@ -56,17 +57,41 @@ function App() {
       setArtists(data.artists.items)
   }
 
+  const generateButtonText = () => {
+    const selected = selectedSongs.findIndex((song) => song.uri === uri)
+    if (selected !== -1) return 'Deselect'
+    return 'Select'
+}
+
+const handleSelect = () => {
+    const selected = selectedSongs.findIndex((song) => song.uri === uri)
+    if (selected > -1) {
+        const newSelectedSongs = selectedSongs.filter((song) => song.uri !== uri)
+        setSelectedSongs(newSelectedSongs)
+    } else {
+        const newSelectedSongs = [...selectedSongs,song]
+        setSelectedSongs(newSelectedSongs)
+    }
+}
+
   const renderArtists = () => {
       return artists.map(artist => (
         <div className="card"> 
           <div key={artist.id}>
               {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
               <p className="title" id="artists">{artist.name}</p>
-              <button className="button">Select</button>  
+              <button
+                        className="transition-all py-2 px-5 text-sm border border-gray-600 hover:border-gray-400 rounded-full"
+                        onClick={handleSelect}
+                    >
+                        {generateButtonText()}
+                        </button>
           </div>
         </div>
       ))
   }
+
+ 
 
   return (
       <div className="App">
